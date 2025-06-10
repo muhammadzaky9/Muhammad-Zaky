@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Zaky - Data Diri</title>
+
+  <!-- Font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background-image: url('/storage/emulated/0/Pictures/Instagram/IMG_20250610_094641_136.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-size: 18px;
+    }
+
+    header {
+      background: rgba(0, 8, 7, 0.7);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    section {
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    .home-content {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      min-height: 100vh;
+      padding-top: 80px;
+    }
+
+    .left {
+      max-width: 500px;
+    }
+
+    .right {
+      margin-top: 20px;
+    }
+
+    h1, h2 {
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    #changing-text {
+      font-size: 24px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .sub-text, .sub-description {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #f0f0f0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    }
+
+    .profile-photo {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border: 4px solid black;
+    }
+
+    .social-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-button {
+      text-decoration: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .social-button.phone { background-color: #4CAF50; }
+    .social-button.instagram { background-color: #E1306C; }
+    .social-button.tiktok { background-color: #000000; }
+    .social-button.email { background-color: #FF5722; }
+    .social-button.facebook { background-color: #1877F2; }
+
+    .social-button:hover {
+      opacity: 0.8;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide {
+      animation: slideIn 0.6s ease-in-out;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: white;
+      animation: bounce 2s infinite;
+      z-index: 5;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    .scroll-up {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #333;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      z-index: 1000;
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-up:hover {
+      background: #555;
+    }
+
+    .skill-bars {
+      max-width: 600px;
+      margin: 30px auto;
+      text-align: left;
+    }
+
+    .skill-item {
+      margin-bottom: 20px;
+    }
+
+    .skill-item span {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .bar {
+      width: 100%;
+      background: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 20px;
+    }
+
+    .progress {
+      height: 100%;
+      background-color: #00bcd4;
+      animation: fillBar 2s forwards;
+    }
+
+    @keyframes fillBar {
+      from { width: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skill">Skill</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home">
+    <div class="home-content">
+      <div class="left">
+        <h1>Muhammad Zaky</h1>
+        <p id="changing-text">Aku gemar bermain bola</p>
+        <p class="sub-text">Olahraga adalah bagian dari hidupku.</p>
+        <p class="sub-description">Saya seorang yang kreatif dan berdedikasi dalam dunia visual dan teknologi.</p>
+      </div>
+      <div class="right">
+        <img src="IMG-20250529-WA0115.jpg" alt="Foto Muhammad Zaky" class="profile-photo">
+      </div>
+    </div>
+  </section>
+
+  <a href="#about" class="scroll-down"><i class="fas fa-angle-down"></i></a>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Nama: Muhammad Zaky<br>
+      Tanggal Lahir: 19 Agustus 2007<br>
+      Alamat: Batam center, Perum Buana vista indah 2 Blok A 93<br>
+      Hobi: Bermain bola<br>
+      Pendidikan: SMK Negeri 7 Batam
+    </p>
+  </section>
+
+  <section id="skill">
+    <h2>Skill</h2>
+    <p>Saya ahli dalam bidang olahraga.</p>
+
+    <div class="skill-bars">
+      <div class="skill-item">
+        <span>Bola</span>
+        <div class="bar"><div class="progress" style="width: 80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span>Renang</span>
+        <div class="bar"><div class="progress" style="width: 75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span>Trifting</span>
+        <div class="bar"><div class="progress" style="width: 85%"></div></div>
+      </div>
+    </div>
+
+    <canvas id="skillChart" width="400" height="200"></canvas>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="social-buttons">
+      <a href="tel:089635971645" class="social-button phone"><i class="fas fa-phone"></i> Telepon</a>
+      <a href="https://www.instagram.com/mhdz4ky_?igsh=bXkxNmlnYjRkdnA3" target="_blank" class="social-button instagram"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://www.tiktok.com/@mhdz4ky_?_t=ZS-8wsv1pHeMhL&_r=1" target="_blank" class="social-button tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+      <a href="mailto:muhammadzaky197245@gmail.com" class="social-button email"><i class="fas fa-envelope"></i> Email</a>
+      <a href="https://www.facebook.com/share/1BXBWBGk9q/" target="_blank" class="social-button facebook"><i class="fab fa-facebook"></i> Facebook</a>
+    </div>
+  </section>
+
+  <a href="#home" class="scroll-up" id="scrollUpBtn"><i class="fas fa-arrow-up"></i></a>
